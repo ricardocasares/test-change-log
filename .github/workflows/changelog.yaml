@@ -11,6 +11,10 @@ jobs:
         with:
           title: Superduper
           description: My blog
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          name: github-pages
+          path: ${{ github.workspace }}/out/
   deploy:
     runs-on: ubuntu-latest
     environment:
