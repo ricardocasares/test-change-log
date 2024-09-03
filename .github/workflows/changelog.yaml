@@ -1,0 +1,22 @@
+on: push
+permissions:
+  pages: write
+  contents: read
+  id-token: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ricardocasares/changelog@main
+        with:
+          title: Superduper
+          description: My blog
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
