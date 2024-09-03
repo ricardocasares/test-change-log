@@ -1,4 +1,10 @@
-on: push
+on:
+  issues:
+    types:
+      - opened
+      - closed
+      - edited
+      - deleted
 permissions:
   pages: write
   contents: read
